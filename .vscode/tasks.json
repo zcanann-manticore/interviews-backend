@@ -1,0 +1,44 @@
+{
+    "version": "2.0.0",
+    "inputs": [
+        {
+          "id": "terminatewatchparam",
+          "type": "command",
+          "command": "workbench.action.tasks.terminate",
+          "args": "watch"
+        }
+      ],
+      "tasks": [
+        {
+          "label": "watch",
+          "command": "dotnet",
+          "type": "process",
+          "args": [
+            "watch",
+            "run",
+            "${workspaceFolder}/weather.csproj",
+            "/property:GenerateFullPaths=true",
+            "/consoleloggerparameters:NoSummary"
+          ],
+          "problemMatcher": "$msCompile",
+          "isBackground": true,
+          "dependsOn":
+          [
+          ]
+        },
+        {
+          "label": "terminate-watch",
+          "type": "shell",
+          "command": "echo ${input:terminatewatchparam}",
+          "problemMatcher": []
+        },
+        {
+            "label": "share-server",
+            "command":
+            [
+               "${command:ngrok-for-vscode.start}",
+               "workbench.action.acceptSelectedQuickOpenItem"
+            ],
+        },
+      ]
+}

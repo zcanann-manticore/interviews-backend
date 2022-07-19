@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations":
+    [
+        {
+            "type": "dotnetwatchattach",
+            "request": "launch",
+            "name": "Run backend server",
+            "args":
+            {
+                // Args to pass to coreclr attach
+                "env":
+                {
+                    "ASPNETCORE_ENVIRONMENT": "Development",
+                }
+            },
+            "task": "watch",
+            "postDebugTask": "terminate-watch",
+            "program": "Backend.exe"
+        },
+        {
+            "type": "f5anything",
+            "request": "launch",
+            "name": "Share localhost",
+            "preLaunchTask": "share-server",
+            "command": ""
+        }
+    ]
+}
